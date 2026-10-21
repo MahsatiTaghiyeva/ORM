@@ -15,8 +15,10 @@ public class DepartmentConfiguration : IEntityTypeConfiguration<Department>
         builder.Property(d => d.Location)
         .HasMaxLength(200);
         builder.Property(d => d.Limit).IsRequired();
+
         builder.Property(d => d.CreatedAt)
-        .IsRequired()
-        .HasDefaultValue(DateTime.Now);
+            .IsRequired()
+            .HasDefaultValueSql("GETDATE()");
+
     }
 }   

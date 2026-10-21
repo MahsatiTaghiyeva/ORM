@@ -1,10 +1,20 @@
+
 using Microsoft.EntityFrameworkCore;
 
 public class MyNLayerAppContext : DbContext
 {
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public DbSet<Department> Departments { get; set; }
+
+    protected override void OnConfiguring(
+        DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server=localhost,1433;Database=MyNLayerDb;User Id=sa;Password=MssqlPass2026_X;TrustServerCertificate=True;");
-        base.OnConfiguring(optionsBuilder);
+        optionsBuilder.UseSqlServer(
+            @"Server=.\SQLEXPRESS;Database=MyNLayerDb;Integrated Security=True;TrustServerCertificate=True;");
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfiguration(new DepartmentConfiguration());
+        base.OnModelCreating(modelBuilder);
     }
 }
