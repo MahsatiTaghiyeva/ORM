@@ -17,8 +17,17 @@ public class DepartmentConfiguration : IEntityTypeConfiguration<Department>
         builder.Property(d => d.Limit).IsRequired();
 
         builder.Property(d => d.CreatedAt)
+<<<<<<< HEAD
             .IsRequired()
             .HasDefaultValueSql("GETDATE()");
 
+=======
+        .IsRequired()
+        .HasDefaultValueSql("GETDATE()");
+        builder. HasMany(d => d.Employees)
+        .WithOne(e => e.Department)
+        .HasForeignKey(e => e.DepartmentId)
+        .OnDelete(DeleteBehavior.Cascade);
+>>>>>>> 46b326c (commit)
     }
 }   

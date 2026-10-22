@@ -5,7 +5,7 @@
 namespace MyNLayerApp.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_1 : Migration
+    public partial class mig4 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
